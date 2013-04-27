@@ -73,14 +73,26 @@ a {
     padding: 0;
     font-family: Helvetica, sans-serif; }
 	
+    .content .listing ul {
+        margin: 0;
+        padding: 0; }
+		
+	 .content .listing li {
+	      font-size: 13px;
+	      list-style: none;
+	      padding: 5px 3px;
+	      margin: 0;
+	      color: #777777;
+	      border-bottom: 1px solid #eee; }
+	
     .content .listing li span {
         float: right; }
+		
+	    .content .listing a {
+	         text-decoration: none; }
+	         
+	    .content .listing a:hover {
+	           text-decoration: underline; }
     
-    .content .listing li {
-      font-size: 13px;
-      list-style: none;
-      padding: 5px 3px;
-      margin: 0;
-      color: #777777;
-      border-bottom: 1px solid #eee; }
+    
  
