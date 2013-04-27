@@ -63,4 +63,21 @@ a {
   left: 130px;
   max-width: 650px;
   margin-bottom: 50px; }
+    
+    .content li {
+    margin-bottom: 10px;
+    line-height: 1.4em; }
+    
+    .content .listing {
+    margin: 10px 0 0 0;
+    padding: 0;
+    font-family: Helvetica, sans-serif; }
+    
+    .content .listing li {
+      font-size: 13px;
+      list-style: none;
+      padding: 5px 3px;
+      margin: 0;
+      color: #777777;
+      border-bottom: 1px solid #eee; }
  
