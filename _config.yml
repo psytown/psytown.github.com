@@ -13,3 +13,7 @@ description: 生活在未来，做有趣的事
 weibo: psytown 
 github: psytown
 gravatar_url: http://www.gravatar.com/avatar/8b891913917d7dd55a01612d45e341f1.png
+
+
+disqus_short_name: psytown
+disqus_show_comment_count: true
