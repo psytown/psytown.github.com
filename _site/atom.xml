@@ -2,93 +2,112 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
  
  <title>Sean Zhang</title>
- <link href="http://zhangdanhe.github.com/atom.xml" rel="self"/>
- <link href="http://zhangdanhe.github.com/"/>
- <updated>2013-02-28T22:55:15+08:00</updated>
- <id>http://zhangdanhe.github.com</id>
+ <link href="http://psytown.github.com/atom.xml" rel="self"/>
+ <link href="http://psytown.github.com/"/>
+ <updated>2013-04-27T13:04:50+08:00</updated>
+ <id>http://psytown.github.com</id>
  <author>
    <name>Sean Zhang</name>
  </author>
  
  
  <entry>
-   <title>吉尔伯特:遇见未来</title>
-   <link href="http://zhangdanhe.github.com/posts/Giboter"/>
-   <updated>2013-02-27T00:00:00+08:00</updated>
-   <id>http://zhangdanhe.github.com/posts/Giboter</id>
-   <content type="html">&lt;h3&gt;吉尔伯特其人&lt;/h3&gt;
+   <title>zsh笔记</title>
+   <link href="http://psytown.github.com/posts/zsh"/>
+   <updated>2013-04-26T00:00:00+08:00</updated>
+   <id>http://psytown.github.com/posts/zsh</id>
+   <content type="html">&lt;h1&gt;zsh&lt;/h1&gt;
 
-&lt;p&gt;吉尔伯特，不知道从什么时候开始比较喜欢“四个字”的心理学家名字，或许是因为某种音节的发音规律听起来触动了某个神经机制吧，初听吉尔伯特这个名字的时候，脑海中也随机浮现“奥尔波特、费斯汀格、斯腾伯格”这样几位大家，然后就直接把吉尔伯特的名字列在其后了。&lt;/p&gt;
+&lt;h4&gt;相关概念&lt;/h4&gt;
 
-&lt;p&gt;但吉尔伯特教授似乎还有着不少公开的“秘密”，使我们更加全面的认识这位因“情感预测“（affective forecasting）方面出色研究而出名的心理学大家。一个很好玩的事实，这位心理学家也曾有少不得志的经历，在19岁的时候从高中辍学，这段经历也使他名列某网站评选的著名的高中辍学者（Famous High School Dropouts ）名单之中，后来他白天和父亲一起工作，晚上自己写科幻小说，为了提高写作水平，他跑到当地的一个写作培训班去报名，然而在骑了很久的车子到了之后，却发现所有的班全部爆满，唯一招生的就是心理学培训班，他因此决定进行心理学的学习，也由此和心理学结下了不解之源。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;怎样理解zsh？iterm和zsh的关系是什么？
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;再后来，吉尔伯特于1981年在丹佛的科罗拉多大学最终获得心理学学士学位。1985年他从普林斯顿大学获得了社会心理学博士学位 。自此吉尔伯特在心理学的领域开始一帆风顺起来，他的教学和研究多次获奖，担任了哈佛学院教授，Phi Beta Kappa的教学荣誉奖，一个古根海姆学会奖，美国心理学协会的早年心理学行业杰出科学奖。他的文章中出现的纽约时报，洛杉矶时报，福布斯，时代周刊等等大型刊物之上。他的科幻短片小说也频繁出现在神奇故事和艾萨克阿西莫夫的科幻杂志上。&lt;/p&gt;
+&lt;p&gt;zsh，全称为Z-shell，是Shell（壳）的一种，在计算机科学的术语中，shell区别与核，是指“提供使用者使用界面”的软件（命令解析器），我们以前熟悉的MS-DOS就是命令行shell的一种，当然window实质上也是shell的一种，而随着图形化shell的普及，shell的含义渐渐只特指命令行的使用界面了。在OSX中，其默认的shell为bash，zsh是一种更为强大和适于个性配置的shell。&lt;/p&gt;
 
-&lt;h3&gt;吉尔伯特的研究&lt;/h3&gt;
+&lt;p&gt;iterm2，我们不难观察到一个现象，就是我们一般在使用命令行界面时都会启动OSX的终端软件，iterm是系统终端软件的替代者，可以将其看作是命令行界面在图形化界面体系中的代理或展示管理工具，所以我们可以通过iterm进行不同的shell切换。
+关于iterm2的&lt;a href=&quot;http://www.yangzhiping.com/tech/iterm2.html&quot;&gt;特色功能介绍&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;当然如果介绍一个心理学家，最应该提到的就是他的心理学研究是什么，应该说他最被业界认可的研究是其在情感预测方面做出的贡献，昨天的TED中国粉丝团中提及的他在TED2004年的讲座也是基于这个研究领域的研究成果而谈的。&lt;/p&gt;
+&lt;h4&gt;安装&lt;/h4&gt;
 
-&lt;p&gt;我们来简单的看看，他在讲座中谈到的话题与其研究之间的联系。&lt;/p&gt;
+&lt;p&gt;按照老阳的&lt;a href=&quot;http://www.yangzhiping.com/tech/mac-dev.html&quot;&gt;安装笔记&lt;/a&gt;，我们实际上做了这样几件事情：&lt;/p&gt;
 
-&lt;p&gt;我们每一个人都是一个出色的预测师，在我们发出某种行为的时候，如果有时间进行思考和决策，我们会对行为发生的结果和其带来的情感反应进行预测，而这种预测的结果同时又会反过来影响人类自身的行为。在此吉尔伯特关注的是前者，人们是怎么预测的，预测的结果是否是准确的呢？&lt;/p&gt;
+&lt;p&gt;下载.dotfiles：&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;【如何预测】&lt;/strong&gt;正如他在讲座中所提到的，人体的大脑里头的前额叶皮质拥有一种模拟（simulation）的功能，这点跟飞行员参与模拟飞行很相似。而这一 特征跟直立行走、语言一样，是进化的伟大的产物，也是人类所特有的。所谓模拟其实是将一系列的场景在大脑中进行预演，有的会形成一种活灵活现的图像，这些 臆想出的情境不但对我们的认知产生影响，也同样会产生相应的情绪反应。幻想中头彩和被车撞，我们都不假思索的选择了前者，正是这种对未来场景进行模拟所带 来的认知和情绪反应的驱动下的结果。这也同时说明了，我们在做出选择时所遵循的原则，其实很简单，那就是我们会做出我们认为最优的决策，即所做出的决策是 最有利的使我们能够最大获益的。但其中其实隐含一个基础条件就是预测必须要准确，否则决策必定是失败的。那么下面我们谈谈预测的准确性问题。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;.dotfiles是为了繁复的新机配置而生的，当你在不同机器或新机上重新配置环境时，会发现这玩意忒有用了，一方面可以保存下自己的习惯用法和配置，另一方面可以使用别人优秀的dotfiles，看看高手是怎么进行配置的。老阳的做法是先下高手的东西，然后自己修改，适合入门后的自己折腾。
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;strong&gt;【预测的准确性】&lt;/strong&gt;大家都看过射击或者是自己投过飞镖，如果我们每一次都不能击中靶心，但是击中位置环绕在靶心周围，上下左右都有，那么我们不太会怀疑有什 么问题，只怪自己学艺不精。而如果我们一直犯同一种错误，比如投中的位置总是处于靶心右下方，这种奇怪的错误模式就有可能引发我们的思考了。吉尔伯特发现 我们在预测情感的时候，往往也会出现类似靶心右下方的差误，即人们往往会高估自身情绪反应的强度和持续时间。&lt;/p&gt;
+&lt;p&gt;Github上的&lt;a href=&quot;https://github.com/search?q=dotfiles&amp;amp;ref=cmdform&quot;&gt;dotfiles&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;就以情侣的关系为例，如果让处于热恋中的男女去估计假如他们在三个月后分手时的心境如何，几乎无一例外的会认为自己会痛不欲生，或者有较为强烈的情绪反应。而在跟踪调查这些情侣的过程中，有的情侣在分手之后所再次被访谈所表达的情绪要远远低于他们之前所估计的情绪水平。&lt;/p&gt;
+&lt;p&gt;安装Oh-My-Zsh：&lt;/p&gt;
 
-&lt;p&gt;同样的情况发生在总统选举的选民身上，在研究过程中，他们纷纷表示如果他们所推选的候选人上台，他们会非常高兴而且这种兴奋将持续3个月，而在跟踪研究中 吉尔伯特他们发现事实却于此相差甚大，他们的快乐的感觉并没有由此而发生差异性变化，也即是说无论是正性还是负性的事件发生之后，其快乐程度往往在基线水 平附近徘徊，很少有较大波动，而即使有很大波动其所持续的时间也远远小于他们所预测的水平。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Oh-My-Zsh就是一个zsh的配置包，可以配置出一些比较有趣的功能，比如命令行中的主题颜色，按键进行命令填充之类
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;他在接受的采访中也谈到：“作为一个物种，我们倾向于对我们得到的一切都感到适度的快乐。如果你拿一个从0到100 的比例尺，一般地，人们报告他们的快乐度在大约75 处。我们一直尝试着达到100，有时也能达到，但是100 不会停留太久。无疑，我们害怕让我们的快乐度降低到20 或10——— 挚爱的人去世了，亲戚关系终结了，对健康构成严重挑战的疾病等等。但是，当那些事情发生时，我们中的大多数会以比我们预计的更快的速度回到情绪基线。在这点上，人类具有原始的开朗性格。”&lt;/p&gt;
+&lt;p&gt;安装zsh：&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;【快乐合成和心理免疫】&lt;/strong&gt;为什么呢？按照吉尔伯特在TED讲座中的解释，因为快乐也可以人工合成（Happiness can be synthesized），每个人都有一种心理免疫的系统（psychological immune system），那是一种通常不为自我所知觉的认知系统，该系统可以帮助人们改变对世界的看法，进而也让自己活得更好。也即是说，并非我们不痛苦，而是一种我们察觉不出的心理免疫系统使我们在不知不觉之间又回归到了快乐的平衡状态下。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;安装非常简单，只要我们已经安装了Homebrew可以通过命令轻松的安装zsh。
+brew install zsh
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;后记&lt;/p&gt;
+&lt;p&gt;配置：&lt;/p&gt;
 
-&lt;p&gt;我们回过头来看看今天介绍的吉尔伯特和他的研究会发现这些心理学成果是有趣并有益的，情感的预测虽然不准确但是对人类的行为和自尊的维护起到了重要的作用，那些“过分”的情绪预测使我们自身更加敏感于利弊，促进行为的发出和趋避，能够较为安全的在这个世界上存活，而心理免疫系统则在不知不觉之间维护这我们情绪的平 衡水平，不至于乐极生悲，让机体的心理状态达到一种和谐状态。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;我们已经安装了zsh和相应的配置包，他们存在与不同的目录中，这个时候需要用到一个Linux常用的系统命令ln -s，来为其建立软连接
+ln -s ~/.dotfiles/zsh ~/.zsh
+ln -s ~/.dotfiles/zsh/zshrc ~/.zshrc
+ln -s ~/.dotfiles/zsh/zshenv ~/.zshenv
+ln -s ~/.dotfiles/zsh/zprofile ~/.zprofile
 
-&lt;p&gt;参考资料：&lt;/p&gt;
+那么什么是软连接，ln的命令又是怎么回事？
+ln是link 是链接的意思，再其后加参数可代表建立链接的类型，比如-s，是标识软链接，我们可以将其理解为为某一个文件在另外一个位置建立一个同步的链接，通常不加参数时会将源文件copy到目标目录下，而软链接则不会拷贝目录，而只产生镜像，这样能够保证不占用重复的硬盘空间，又能够保持两者的同步。
 
-&lt;p&gt;维基百科：http://en.wikipedia.org/wiki/Daniel_Gilbert_(psychologist)&lt;/p&gt;
+对zsh设置默认
+1、打开配置文件
+subl /etc/shells
+2、添加zsh路径
+/usr/local/bin/zsh
+3、保存后到命令行中执行默认命令
+chsh -s /usr/local/bin/zsh
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;a href=&quot;http://www.tedtochina.com/2009/01/12/dan_gilbert_stumbling_upon_happiness/&quot;&gt;TED中国粉丝团 《心理免疫：如何撞上快乐》&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;link&lt;a href=&quot;http://www.linuxso.com/command/ln.html&quot;&gt;命令解释&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;http://www.psych.ac.cn/CN/doc/lishu/xingfugan.pdf&quot;&gt;梁哲 《幸福感预测中的影响偏差》&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;相关配置文件的下载和安装详见老阳笔记不再重述，配置应该根据不同人的习惯而进行设置，在你对此没有概念的时候，可以采取使用流行配置，使用高手配置的方法，来看是否顺手，并在此基础上进行修改。&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;http://www.edge.org/3rd_culture/gilbert03/gilbert_index.html&quot;&gt;“Affective Forecasting…Or…The Big Wombassa: What You Think You’re Going To Get, And What You Don’t Get, When You Get What You Want”: A Talk with Daniel Gilbert&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;现在只介绍了概念和安装配置的问题，后续该笔记随着深入应该对相应的如何配置zsh进行记录&lt;/code&gt;&lt;/p&gt;
 
-&lt;hr /&gt;
+&lt;p&gt;&lt;code&gt;4月26日添加&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;You&amp;rsquo;ll want to &lt;a href=&quot;https://github.com/holman/left#readme&quot;&gt;get the code&lt;/a&gt; and read the README to learn how to
-install and set up Left for your own purposes.&lt;/p&gt;
+&lt;h4&gt;技巧1：如何进行别名快捷方式（aliases）的建立&lt;/h4&gt;
 
-&lt;p&gt;If you have any questions, follow and ping me on Twitter- I&amp;rsquo;m
-&lt;a href=&quot;https://twitter.com/holman&quot;&gt;@holman&lt;/a&gt;.&lt;/p&gt;
-</content>
- </entry>
- 
- <entry>
-   <title>Left</title>
-   <link href="http://zhangdanhe.github.com/posts/left"/>
-   <updated>2012-12-12T00:00:00+08:00</updated>
-   <id>http://zhangdanhe.github.com/posts/left</id>
-   <content type="html">&lt;p&gt;Left is a clean, whitespace-happy layout for &lt;a href=&quot;https://github.com/mojombo/jekyll&quot;&gt;Jekyll&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;为什么要建立别名？建立别名可以在命令行界面快速的启动某种服务或开启某个目录，类似于我们在桌面上设置快捷方式，以方便我们更加有效率的工作。&lt;/p&gt;
 
-&lt;p&gt;This is designed to be an easy layout to modify for your own blog. It was
-extracted from &lt;a href=&quot;http://zachholman.com&quot;&gt;zachholman.com&lt;/a&gt;, which means it was battle-hardened from
-years of posting serious blog posts about emoji and swear words.&lt;/p&gt;
+&lt;p&gt;进入zsh目录&lt;/p&gt;
 
-&lt;p&gt;You&amp;rsquo;re actually reading an example post right now. See how cool it is? Oh, be
-quiet, you&amp;rsquo;re making me blush.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cd .dotfiles  #进入.dotfiles文件夹
+cd .zsh       #进入zsh
+subl .        #启动sublime text2对该文件夹文件进行编辑
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;hr /&gt;
+&lt;p&gt;打开aliases.zsh
+我们可以看到类似这样的字样&lt;/p&gt;
 
-&lt;p&gt;You&amp;rsquo;ll want to &lt;a href=&quot;https://github.com/holman/left#readme&quot;&gt;get the code&lt;/a&gt; and read the README to learn how to
-install and set up Left for your own purposes.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;alias ga=&#39;git add&#39;
+alias gp=&#39;git push&#39;
+alias gl=&#39;git log&#39;
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;If you have any questions, follow and ping me on Twitter- I&amp;rsquo;m
-&lt;a href=&quot;https://twitter.com/holman&quot;&gt;@holman&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;现在的需求是建立一个快速进入某项目路径的别名，在其中添加&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;alias &#39;snaapp=cd dev/github/sna.psyapp.com&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;重启iterm后，在终端输入&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ snaapp
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;则会自动跳转至所设置的目录了&lt;/p&gt;
 </content>
  </entry>
  
