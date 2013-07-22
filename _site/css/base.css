@@ -1,0 +1,99 @@
+@charset "UTF-8";
+body {
+  font-family: "Palatino Linotype", "Book Antiqua", "Microsoft YaHei",Palatino, serif;
+  margin: 0;
+  -webkit-font-smoothing: antialiased; }
+
+a {
+  color: #227ce8; }
+
+.sidebar {
+  position: fixed;
+  left: 15px;
+  top: 15px;
+  width: 80px;
+  font-family: Helvetica, sans-serif; }
+  .sidebar a {
+    text-decoration: none; }
+  .sidebar img {
+    padding: 0 3px;
+    border: 0; }
+  .sidebar .avatar {
+    padding: 0;
+    margin-left: 2px;
+    border-radius: 5px; }
+  .sidebar .name {
+    text-transform: uppercase;
+    margin: 10px 0 20px 0; }
+    .sidebar .name #fname {
+      padding-left: 3px;
+      font-size: 21px;
+      letter-spacing: 5px;
+      color: black; }
+    .sidebar .name #lname {
+      font-size: 19px;
+      padding-left: 3px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      color: black; }
+  .sidebar .meta a {
+    margin-left: 0px;
+    color: black; }
+    .sidebar .meta a:hover {
+      color: #227ce8; }
+  .sidebar .sections {
+    margin: 15px 0 0 0; }
+    .sidebar .sections a {
+      padding: 3px 0;
+      color: black;
+      font-weight: bold;
+      font-size: 12px;
+      display: block; }
+      .sidebar .sections a:hover {
+        color: #227ce8; }
+    .sidebar .sections ul {
+      margin: 0;
+      padding: 0; }
+    .sidebar .sections li {
+      list-style: none;
+      margin-bottom: 7px; }
+
+.content {
+  position: absolute;
+  left: 130px;
+  max-width: 650px;
+  right: 20px;
+  margin-bottom: 100px; }
+    
+    .content li {
+    margin-bottom: 10px;
+    line-height: 1.4em; }
+    
+    .content .listing {
+    margin: 10px 0 0 0;
+    padding: 0;
+    font-family: Helvetica, sans-serif; }
+	
+    .content .listing ul {
+        margin: 0;
+        padding: 0; }
+		
+	 .content .listing li {
+	      font-size: 13px;
+	      list-style: none;
+	      padding: 5px 3px;
+	      margin: 0;
+	      color: #777777;
+	      border-bottom: 1px solid #eee; }
+	
+    .content .listing li span {
+        float: right; }
+		
+	    .content .listing a {
+	         text-decoration: none; }
+	         
+	    .content .listing a:hover {
+	           text-decoration: underline; }
+    
+    
+ 

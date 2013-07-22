@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <title>
+    
+      Jekyll+Github打造Blog &ndash;
+    
+    Sean Zhang
+  </title>
+
+  <meta name="author" content="Sean Zhang" />
+  <meta name="description" content="生活在未来，做有趣的事" />
+
+  <link rel="alternate" type="application/rss+xml" href="/atom.xml" />
+
+  <link rel="stylesheet" href="/css/base.css" type="text/css" media="screen, projection" />
+  <link rel="stylesheet" href="/css/pygments.css" type="text/css" />
+   <link rel="stylesheet" href="/css/theme.css" type="text/css" />
+  <link media="only screen and (max-device-width: 480px)" href="/css/iphone.css" type="text/css" rel="stylesheet" />
+  <link media="only screen and (device-width: 768px)" href="/css/iphone.css" type="text/css" rel="stylesheet" />
+  <link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/application.js"></script>
+</head>
+
+<body>
+  <section class="sidebar">
+    <a href="/">
+      <img src="http://www.gravatar.com/avatar/8b891913917d7dd55a01612d45e341f1.png?s=150" height="75" width="75" class="avatar" />
+    </a>
+
+    <section class="name">
+      <a href="/">
+        <span id="fname">Sean</span>
+        <span id="lname">Zhang</span>
+      </a>
+    </section>
+
+    <section class="meta">
+      <a href="https://github.com/psytown" target="_blank"><img src="/images/github.png" /></a>
+      <a href="http://weibo.com/psytown" target="_blank"><img src="/images/weibo.png"></a>
+      <a href="/atom.xml"><img src="/images/rss.png" /></a>
+    </section>
+
+    <section class="sections">
+      <ul>
+        <li><a href="/about.html">about</a></li>
+        <li><a href="/">posts</a></li>
+      </ul>
+    </section>
+  </section>
+
+  <section class="content">
+  <h1>
+    <a href="/posts/jekyll">Jekyll+Github打造Blog</a>
+  </h1>
+
+  <section class="byline">
+    April 26, 2013
+  </section>
+
+  <h3>安装jekyll</h3>
+
+<p>进入<a href="http://www.jekyllrb.com">jekyll官方站</a>，看到code、docs、install和switch，我们先来看看install，跳转至<a href="https://github.com/mojombo/jekyll/wiki/install">页面</a>。</p>
+
+<p>包括如下内容</p>
+
+<ul>
+<li>安装jekyll</li>
+<li>介绍所支持的LaTeX to PNG</li>
+<li>RDiscount</li>
+<li>Pygments的安装和使用</li>
+</ul>
+
+
+<p>先只关注Jekyll，其他的稍后再表，安装jekyll很简单，由于是基于ruby开发，所以通过rubygem的方式安装是最简单的</p>
+
+<pre><code>gem install jekyll
+</code></pre>
+
+<p>安装完毕，看如何<a href="https://github.com/mojombo/jekyll/wiki/usage">使用</a>和<a href="https://github.com/mojombo/jekyll/wiki/configuration">配置</a></p>
+
+<h3>jekyll的使用</h3>
+
+<p>可以看到在jekyll的使用篇介绍，使用流程是非常简单的：</p>
+
+<ol>
+<li>建立所约定的一个站点框架结构</li>
+<li>准备一些文章</li>
+<li>在本地运行</li>
+<li>提交blog</li>
+</ol>
+
+
+<p>一项一项进行：</p>
+
+<blockquote><p>建立所约定的一个站点框架结构</p></blockquote>
+
+<p>官方所展示的标准框架如下,如果接触过rails的同学就会对约定框架的这种模式非常熟悉，你要做的事情就是在约定的地方放约定的文件:</p>
+
+<pre><code>.
+|-- _config.yml
+|-- _includes
+|-- _layouts
+|   |-- default.html
+|   `-- post.html
+|-- _posts
+|   |-- 2007-10-29-why-every-programmer-should-play-nethack.textile
+|   `-- 2009-04-26-barcamp-boston-4-roundup.textile
+|-- _site
+`-- index.html
+</code></pre>
+
+<p>在jekyll的整个基础框架中</p>
+
+<ul>
+<li>config.yml:所有配置均写在该文件中</li>
+<li>_layouts:页面中的布局样例</li>
+<li>_posts：用markdown写完文章扔在这里面</li>
+<li>_site：</li>
+<li>index.html:这个不用多说了，首页的html文件</li>
+</ul>
+
+
+<p>了解完之后，你可以有两个选择：</p>
+
+<ol>
+<li>从网上下载<a href="https://github.com/mojombo/jekyll/wiki/Sites">其他人</a>的jekyll模板，修改后push到github上;</li>
+<li>自己按照这个路径框架设计一个jekyll模板;</li>
+</ol>
+
+
+<p>就两个任务而言，前一个所考察的是对git和github的使用熟悉度，后一个除了考察git以外，还要求建blog的同学具备一定的HTML和CSS的基础知识。大家根据自己的小白程度而自己选择相应的任务完成，别把学习曲线搞的太陡峭。</p>
+
+<p>我们先按照第一个任务往下进行</p>
+
+<h3>推送到github上</h3>
+
+<p>执行该任务务必满足两个假设：</p>
+
+<ul>
+<li>假设你已经在刚才推荐的<a href="https://github.com/mojombo/jekyll/wiki/Sites">模板</a>地址中找到了心仪的，而且已经通过github的ZIP包下载到了本地</li>
+<li>假设你已经拥有一个github账号</li>
+</ul>
+
+
+<h3>jekyll的配置</h3>
+
+
+  <!-- TODO: bio here -->
+  <section class="meta">
+  
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'psytown'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+</section>
+  
+ 
+  
+</body>
+
+</html>
