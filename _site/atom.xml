@@ -4,12 +4,117 @@
  <title>Sean Zhang</title>
  <link href="http://psytown.github.com/atom.xml" rel="self"/>
  <link href="http://psytown.github.com/"/>
- <updated>2013-07-22T23:36:13+08:00</updated>
+ <updated>2013-07-23T23:41:43+08:00</updated>
  <id>http://psytown.github.com</id>
  <author>
    <name>Sean Zhang</name>
  </author>
  
+ 
+ <entry>
+   <title>d3.js应用笔记①</title>
+   <link href="http://psytown.github.com/posts/d3-note-one"/>
+   <updated>2013-07-23T00:00:00+08:00</updated>
+   <id>http://psytown.github.com/posts/d3-note-one</id>
+   <content type="html">&lt;p&gt;想展示7项测验的得分情况，直方图太过死板，故使用熟悉的force-directed阉割links之后的graph来表示，好处有两个&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;对于平板更加友好，圆形的图像更加适合平板的展示&lt;/li&gt;
+&lt;li&gt;动态效果碰来碰去很有意思，直方图比较死板，动态的force图形可以拖来拖去增加趣味性&lt;/li&gt;
+&lt;/ol&gt;
+
+
+&lt;h4&gt;基本绘制思路：&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;画布准备：定义绘制图像的画布&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; var w = 960,
+     h = 550,
+     r = 6,
+     fill = d3.scale.category10();
+
+ var svg = d3.select(&quot;#result&quot;).append(&quot;svg:svg&quot;)
+          .attr(&quot;width&quot;, w)
+          .attr(&quot;height&quot;, h);
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;引用布局并定义&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; var force = d3.layout.force()
+             .gravity(0.07)
+             .charge(-800)
+             .linkDistance(130)
+             .size([w, h]);
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;外部数据的绑定&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; d3.json(&quot;data.json&quot;, function(json) {
+    var node = svg.selectAll(&quot;circle&quot;)
+              .data(json.tests)
+              .enter().append(&quot;g&quot;)
+              .attr(&quot;class&quot;, &quot;node&quot;)
+              .on(&quot;mouseover&quot;, mouseover)
+              .on(&quot;mouseout&quot;, mouseout)
+              .call(force.drag);
+    })
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;定义node节点&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; node.append(&quot;svg:circle&quot;)
+     .attr(&quot;r&quot;, function(d) { return d.score; })
+     .style(&quot;fill&quot;, function(d) { return fill(d.group); });
+
+force.nodes(json.tests)
+     .on(&quot;tick&quot;, tick)
+     .start();
+
+ function tick() {
+ node.attr(&quot;transform&quot;, function(d) { return &quot;translate(&quot; + d.x + &quot;,&quot; + d.y + &quot;)&quot;; });
+ }
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;增加特征&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; node.append(&quot;text&quot;)
+   .attr(&quot;dy&quot;, &quot;.35em&quot;)
+   .attr(&quot;text-anchor&quot;, &quot;middle&quot;)
+   .attr(&quot;class&quot;, &quot;node-text&quot;)
+   .style(&quot;fill&quot;,&quot;#fff&quot;)
+   .text(function(d) { return d.score; });
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;各种堪错&lt;/li&gt;
+&lt;/ol&gt;
+
+
+&lt;h4&gt;遇到的问题：&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;始终无法显示text内容的问题：&lt;/p&gt;
+
+&lt;p&gt;当时enter（）之后并没有添加&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; .append(&quot;g&quot;)
+ .attr(&quot;class&quot;, &quot;node&quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;直接append的circle，在添加text的过程中，在控制台明明可以看到text-content数据，但是始终不显示text的内容，将append独立，并添加以上代码后，问题解决。&lt;/p&gt;
+
+&lt;p&gt; 应该是这样做之后，circle和text的等级就是平级，都在g之下，这样就可以显示了。耗时较长，注意该问题。&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;颜色的问题：
+一开始始终不会使用颜色的scale，现在看应该是当时定义的变量和后面的变量引用不符：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; fill = d3.scale.category10();
+ …
+ .style(&quot;fill&quot;, function(d) { return fill(d.group); });
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;使text文字在图形中居中的代码：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; .attr(&quot;text-anchor&quot;, &quot;middle&quot;)
+ .attr(&quot;class&quot;, &quot;node-text&quot;)
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+</content>
+ </entry>
  
  <entry>
    <title>Yeoman</title>

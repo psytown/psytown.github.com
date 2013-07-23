@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <title>
+    
+      d3.js应用笔记① &ndash;
+    
+    Sean Zhang
+  </title>
+
+  <meta name="author" content="Sean Zhang" />
+  <meta name="description" content="生活在未来，做有趣的事" />
+
+  <link rel="alternate" type="application/rss+xml" href="/atom.xml" />
+
+  <link rel="stylesheet" href="/css/base.css" type="text/css" media="screen, projection" />
+  <link rel="stylesheet" href="/css/pygments.css" type="text/css" />
+   <link rel="stylesheet" href="/css/theme.css" type="text/css" />
+  <link media="only screen and (max-device-width: 480px)" href="/css/iphone.css" type="text/css" rel="stylesheet" />
+  <link media="only screen and (device-width: 768px)" href="/css/iphone.css" type="text/css" rel="stylesheet" />
+  <link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/application.js"></script>
+</head>
+
+<body>
+  <section class="sidebar">
+    <a href="/">
+      <img src="http://www.gravatar.com/avatar/8b891913917d7dd55a01612d45e341f1.png?s=150" height="75" width="75" class="avatar" />
+    </a>
+
+    <section class="name">
+      <a href="/">
+        <span id="fname">Sean</span>
+        <span id="lname">Zhang</span>
+      </a>
+    </section>
+
+    <section class="meta">
+      <a href="https://github.com/psytown" target="_blank"><img src="/images/github.png" /></a>
+      <a href="http://weibo.com/psytown" target="_blank"><img src="/images/weibo.png"></a>
+      <a href="/atom.xml"><img src="/images/rss.png" /></a>
+    </section>
+
+    <section class="sections">
+      <ul>
+        <li><a href="/about.html">about</a></li>
+        <li><a href="/">posts</a></li>
+      </ul>
+    </section>
+  </section>
+
+  <section class="content">
+  <h1>
+    <a href="/posts/d3-note-one">d3.js应用笔记①</a>
+  </h1>
+
+  <section class="byline">
+    July 23, 2013
+  </section>
+
+  <p>想展示7项测验的得分情况，直方图太过死板，故使用熟悉的force-directed阉割links之后的graph来表示，好处有两个</p>
+
+<ol>
+<li>对于平板更加友好，圆形的图像更加适合平板的展示</li>
+<li>动态效果碰来碰去很有意思，直方图比较死板，动态的force图形可以拖来拖去增加趣味性</li>
+</ol>
+
+
+<h4>基本绘制思路：</h4>
+
+<ol>
+<li><p>画布准备：定义绘制图像的画布</p>
+
+<pre><code> var w = 960,
+     h = 550,
+     r = 6,
+     fill = d3.scale.category10();
+
+ var svg = d3.select("#result").append("svg:svg")
+          .attr("width", w)
+          .attr("height", h);
+</code></pre></li>
+<li><p>引用布局并定义</p>
+
+<pre><code> var force = d3.layout.force()
+             .gravity(0.07)
+             .charge(-800)
+             .linkDistance(130)
+             .size([w, h]);
+</code></pre></li>
+<li><p>外部数据的绑定</p>
+
+<pre><code> d3.json("data.json", function(json) {
+    var node = svg.selectAll("circle")
+              .data(json.tests)
+              .enter().append("g")
+              .attr("class", "node")
+              .on("mouseover", mouseover)
+              .on("mouseout", mouseout)
+              .call(force.drag);
+    })
+</code></pre></li>
+<li><p>定义node节点</p>
+
+<pre><code> node.append("svg:circle")
+     .attr("r", function(d) { return d.score; })
+     .style("fill", function(d) { return fill(d.group); });
+
+force.nodes(json.tests)
+     .on("tick", tick)
+     .start();
+
+ function tick() {
+ node.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+ }
+</code></pre></li>
+<li><p>增加特征</p>
+
+<pre><code> node.append("text")
+   .attr("dy", ".35em")
+   .attr("text-anchor", "middle")
+   .attr("class", "node-text")
+   .style("fill","#fff")
+   .text(function(d) { return d.score; });
+</code></pre></li>
+<li>各种堪错</li>
+</ol>
+
+
+<h4>遇到的问题：</h4>
+
+<ol>
+<li><p>始终无法显示text内容的问题：</p>
+
+<p>当时enter（）之后并没有添加</p>
+
+<pre><code> .append("g")
+ .attr("class", "node")
+</code></pre>
+
+<p>直接append的circle，在添加text的过程中，在控制台明明可以看到text-content数据，但是始终不显示text的内容，将append独立，并添加以上代码后，问题解决。</p>
+
+<p> 应该是这样做之后，circle和text的等级就是平级，都在g之下，这样就可以显示了。耗时较长，注意该问题。</p></li>
+<li><p>颜色的问题：
+一开始始终不会使用颜色的scale，现在看应该是当时定义的变量和后面的变量引用不符：</p>
+
+<pre><code> fill = d3.scale.category10();
+ …
+ .style("fill", function(d) { return fill(d.group); });
+</code></pre></li>
+<li><p>使text文字在图形中居中的代码：</p>
+
+<pre><code> .attr("text-anchor", "middle")
+ .attr("class", "node-text")
+</code></pre></li>
+</ol>
+
+
+
+  <!-- TODO: bio here -->
+  <section class="meta">
+  
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'psytown'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+</section>
+  
+ 
+  
+</body>
+
+</html>
