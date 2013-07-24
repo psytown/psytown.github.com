@@ -4,12 +4,53 @@
  <title>Sean Zhang</title>
  <link href="http://psytown.github.com/atom.xml" rel="self"/>
  <link href="http://psytown.github.com/"/>
- <updated>2013-07-23T23:41:43+08:00</updated>
+ <updated>2013-07-24T23:09:58+08:00</updated>
  <id>http://psytown.github.com</id>
  <author>
    <name>Sean Zhang</name>
  </author>
  
+ 
+ <entry>
+   <title>jQuery调用JSON</title>
+   <link href="http://psytown.github.com/posts/json-and-jquery"/>
+   <updated>2013-07-24T00:00:00+08:00</updated>
+   <id>http://psytown.github.com/posts/json-and-jquery</id>
+   <content type="html">&lt;p&gt;今天在做sidebar分值列表的时候，想到用jQuery调用JSON数据，在做的过程中，发现其实里面蕴含两个知识点：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;调用JSON文件方法&lt;/li&gt;
+&lt;li&gt;如何调取JSON内Object、Array的不同数据形式&lt;/li&gt;
+&lt;/ol&gt;
+
+
+&lt;h4&gt;调用JSON文件&lt;/h4&gt;
+
+&lt;p&gt;调用还是比较简单的，通过$.get()方式，官方文档详见&lt;a href=&quot;http://api.jquery.com/jQuery.getJSON/&quot;&gt;这里&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    $.getJSON(url,data,callback)
+
+    例1：callback为调用某函数
+    $.getJSON(data.json,&#39;someDataSet&#39;,someFunction)
+
+    function someFunciton(data){
+      ///balalala
+    }
+
+    例2：callback直接使用函数
+    $.getJSON(data.json,&#39;someDataSet&#39;,function(data) {
+    ////balalalla
+    });
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4&gt;如何调取不同数据形式&lt;/h4&gt;
+
+&lt;p&gt;需要特殊记录一下在数组中取值，我们在没有string头的情况下，需要定位array的index&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    json.users[3].name
+&lt;/code&gt;&lt;/pre&gt;
+</content>
+ </entry>
  
  <entry>
    <title>d3.js应用笔记①</title>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <meta charset="utf-8">
+  <title>
+    
+      jQuery调用JSON &ndash;
+    
+    Sean Zhang
+  </title>
+
+  <meta name="author" content="Sean Zhang" />
+  <meta name="description" content="生活在未来，做有趣的事" />
+
+  <link rel="alternate" type="application/rss+xml" href="/atom.xml" />
+
+  <link rel="stylesheet" href="/css/base.css" type="text/css" media="screen, projection" />
+  <link rel="stylesheet" href="/css/pygments.css" type="text/css" />
+   <link rel="stylesheet" href="/css/theme.css" type="text/css" />
+  <link media="only screen and (max-device-width: 480px)" href="/css/iphone.css" type="text/css" rel="stylesheet" />
+  <link media="only screen and (device-width: 768px)" href="/css/iphone.css" type="text/css" rel="stylesheet" />
+  <link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/application.js"></script>
+</head>
+
+<body>
+  <section class="sidebar">
+    <a href="/">
+      <img src="http://www.gravatar.com/avatar/8b891913917d7dd55a01612d45e341f1.png?s=150" height="75" width="75" class="avatar" />
+    </a>
+
+    <section class="name">
+      <a href="/">
+        <span id="fname">Sean</span>
+        <span id="lname">Zhang</span>
+      </a>
+    </section>
+
+    <section class="meta">
+      <a href="https://github.com/psytown" target="_blank"><img src="/images/github.png" /></a>
+      <a href="http://weibo.com/psytown" target="_blank"><img src="/images/weibo.png"></a>
+      <a href="/atom.xml"><img src="/images/rss.png" /></a>
+    </section>
+
+    <section class="sections">
+      <ul>
+        <li><a href="/about.html">about</a></li>
+        <li><a href="/">posts</a></li>
+      </ul>
+    </section>
+  </section>
+
+  <section class="content">
+  <h1>
+    <a href="/posts/json-and-jquery">jQuery调用JSON</a>
+  </h1>
+
+  <section class="byline">
+    July 24, 2013
+  </section>
+
+  <p>今天在做sidebar分值列表的时候，想到用jQuery调用JSON数据，在做的过程中，发现其实里面蕴含两个知识点：</p>
+
+<ol>
+<li>调用JSON文件方法</li>
+<li>如何调取JSON内Object、Array的不同数据形式</li>
+</ol>
+
+
+<h4>调用JSON文件</h4>
+
+<p>调用还是比较简单的，通过$.get()方式，官方文档详见<a href="http://api.jquery.com/jQuery.getJSON/">这里</a></p>
+
+<pre><code>    $.getJSON(url,data,callback)
+
+    例1：callback为调用某函数
+    $.getJSON(data.json,'someDataSet',someFunction)
+
+    function someFunciton(data){
+      ///balalala
+    }
+
+    例2：callback直接使用函数
+    $.getJSON(data.json,'someDataSet',function(data) {
+    ////balalalla
+    });
+</code></pre>
+
+<h4>如何调取不同数据形式</h4>
+
+<p>需要特殊记录一下在数组中取值，我们在没有string头的情况下，需要定位array的index</p>
+
+<pre><code>    json.users[3].name
+</code></pre>
+
+
+  <!-- TODO: bio here -->
+  <section class="meta">
+  
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'psytown'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+</section>
+  
+ 
+  
+</body>
+
+</html>
