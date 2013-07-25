@@ -4,12 +4,92 @@
  <title>Sean Zhang</title>
  <link href="http://psytown.github.com/atom.xml" rel="self"/>
  <link href="http://psytown.github.com/"/>
- <updated>2013-07-24T23:09:58+08:00</updated>
+ <updated>2013-07-25T23:47:02+08:00</updated>
  <id>http://psytown.github.com</id>
  <author>
    <name>Sean Zhang</name>
  </author>
  
+ 
+ <entry>
+   <title>实现对div的slide效果</title>
+   <link href="http://psytown.github.com/posts/div-slide"/>
+   <updated>2013-07-25T00:00:00+08:00</updated>
+   <id>http://psytown.github.com/posts/div-slide</id>
+   <content type="html">&lt;p&gt;想把报告的分页过渡做的有趣一些，并且也适合pad端的阅读，slide效果是最为自然的一种实现方式，我们可以在很多产品中看到slide的影子，最为普遍的slide图片，这个在各大中小网站都可以看到slidebanner，另外一种则是&lt;a href=&quot;http://erly.com/&quot;&gt;Erly&lt;/a&gt;的那种横版slide效果，后来国内纯银团队的蝉游记借鉴，这种slide是对div进行整体的滑动。&lt;/p&gt;
+
+&lt;p&gt;在google和github上找了一些slide的方案，基本搜索的话会分为三大类&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;移动端的slidemenu，最火的一些repo&lt;/li&gt;
+&lt;li&gt;传统对图片的slide&lt;/li&gt;
+&lt;li&gt;对div的slide效果&lt;/li&gt;
+&lt;/ol&gt;
+
+
+&lt;p&gt;在试用多个不靠谱的方案后，最后发现&lt;a href=&quot;http://liquidslider.com/&quot;&gt;Liquid Slider 2 &lt;/a&gt;比较符合自己的预期效果，看了一眼github，这哥们几分钟前刚更新过，靠谱。&lt;/p&gt;
+
+&lt;h4&gt;Trial process&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;新建测试文档&lt;/p&gt;
+
+&lt;p&gt; 由于之前的文档中编辑d3和jQuery，还没有剥离js出来，索性新建一个test.html只包含到container层的新文件&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;安装&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://kevinbatdorf.github.io/liquidslider/examples/page1.html&quot;&gt;Liquid Slider Examples&lt;/a&gt;在examples页面，看如何install，比较简单，就是download之后引入相关的文件。需要注意的是，里面除了引用还需要引一段function代码，查看其文档后得知，相关的配置可在该函数中进行修改。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; &amp;lt;script&amp;gt;
+ $(function(){
+ $(&#39;#slider-id&#39;).liquidSlider();
+ });
+ &amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;注：“#silder-id”为你想slide的div集的最高级div的id名，可更换为其他，引入的js文件会在该div集中进行class等各种属性的添加，来实现其slide效果，所以html中的代码很简单都是&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;div class=&quot;liquid-slider&quot; id=&quot;slider-id&quot;&amp;gt;
+&amp;lt;div&amp;gt;
+   &amp;lt;h2 class=&quot;title&quot;&amp;gt;Slide 1&amp;lt;/h2&amp;gt;
+   // Content goes here
+&amp;lt;/div&amp;gt;
+&amp;lt;div&amp;gt;
+   &amp;lt;h2 class=&quot;title&quot;&amp;gt;Slide 2&amp;lt;/h2&amp;gt;
+   // Content goes here
+&amp;lt;/div&amp;gt;
+&amp;lt;div&amp;gt;
+   &amp;lt;h2 class=&quot;title&quot;&amp;gt;Slide 3&amp;lt;/h2&amp;gt;
+   // Content goes here
+&amp;lt;/div&amp;gt;
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;配置&lt;/p&gt;
+
+&lt;p&gt;配置需要查看都有什么功能，一个是看example中的例子，另一个是看&lt;a href=&quot;http://liquidslider.com/documentation/&quot;&gt;Documentation&lt;/a&gt;，配置方法就是在添加的function函数代码中添加相应的true或者false来进行相关功能的开启和闭合，比如想使用键盘控制slide的滑动，则添加如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt; &amp;lt;script&amp;gt;
+ $(function(){
+ $(&#39;#slider-id&#39;).liquidSlider({
+
+ keyboardNavigation: true
+
+ });
+ });
+ &amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt; 然后就能用键盘控制slide了&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;定制
+和bootstrap一样，可以根据不同的选择来进行&lt;a href=&quot;http://liquidslider.com/custom-build/&quot;&gt;Custom Build&lt;/a&gt;，选择完之后，会生成相应的demo文件夹，包括html、js、css和img。
+不过奇怪的是，选择后替换js，但并不是默认，而是还要再function中开启相关配置，也许可能是没找对地方，再之后开发时再注意一下吧&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;swipe功能
+里面swipe功能对于移动端用户是非常有用的，移动端键盘就不起作用了，可以用滑屏来操作slide，想支持滑屏，需要安装&lt;a href=&quot;https://github.com/mattbryson/TouchSwipe-Jquery-Plugin&quot;&gt;mattbryson/TouchSwipe-Jquery-Plugin&lt;/a&gt;。&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+
+&lt;p&gt;在想有没有什么服务器插件能够在同wifi下，使用pad访问机器上的网页，grunt可以么？&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>jQuery调用JSON</title>
